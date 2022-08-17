@@ -8,8 +8,7 @@ import java.util.Arrays;
 @Data
 
 public class TicketsManager {
-    private Ticket[] tickets = new Ticket[0];
-    private Repository repository = new Repository();
+    private Repository repository;
     public TicketsManager(Repository repository){
         this.repository = repository;
     }
