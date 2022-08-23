@@ -35,6 +35,7 @@ public class TicketsManagerTest {
 
 
     //поиск и сортировка
+    //подходят несколько
     @Test
     public void shouldFindAndSortTickets(){
         manager.add(ticket1);
@@ -45,6 +46,36 @@ public class TicketsManagerTest {
 
         Ticket[] actual = manager.findTickets("SVO","SSH");
         Ticket[] expected = {ticket5, ticket1};
+
+        assertArrayEquals(expected, actual);
+
+    }
+    //подходит один
+    @Test
+    public void shouldFindOneTicket(){
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+
+        Ticket[] actual = manager.findTickets("DME","BHN");
+        Ticket[] expected = {ticket2};
+
+        assertArrayEquals(expected, actual);
+
+    }
+    //ни один не подходит
+    @Test
+    public void shouldFind0(){
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+
+        Ticket[] actual = manager.findTickets("DME","DXB");
+        Ticket[] expected = {};
 
         assertArrayEquals(expected, actual);
 
